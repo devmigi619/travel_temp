@@ -94,6 +94,11 @@ h2{
   list-style:none;color:var(--sea);font-size:1.05rem;
 }
 .decl summary::-webkit-details-marker{display:none}
+.decl summary::after{
+  content:"▾ 눌러서 펼치기";display:block;
+  font-size:.8rem;font-weight:400;color:var(--sub);margin-top:.1rem;
+}
+.decl[open] summary::after{content:"▴ 접기"}
 .decl[open] summary{margin-bottom:.5rem}
 
 /* 핵심정보 */
