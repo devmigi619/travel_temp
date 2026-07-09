@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>제주 가족여행 · 7/11 ~ 7/13</title>
+<meta property="og:title" content="제주 가족여행 7/11(토) ~ 7/13(월)">
+<meta property="og:description" content="일정 · 비행편 · 숙소 · 예산 한눈에 보기">
+<meta property="og:type" content="website">
+<style>
+:root{
+  --bg:#FBF7EF;
+  --card:#FFFFFF;
+  --ink:#26333B;
+  --sub:#5C6B73;
+  --sea:#0E7C86;
+  --sea-soft:#E3F2F3;
+  --sand:#F3EAD9;
+  --line:#E8E0D2;
+  --ok:#1B7F4D;   --ok-bg:#E4F4EB;
+  --warn:#B45309; --warn-bg:#FDF0DF;
+  --info:#4B5563; --info-bg:#EEF0F2;
+  --opt:#6D28D9;  --opt-bg:#F1EBFB;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{font-size:19px}
+body{
+  background:var(--bg);color:var(--ink);
+  font-family:system-ui,-apple-system,"Apple SD Gothic Neo","Noto Sans KR","Malgun Gothic",sans-serif;
+  line-height:1.6;word-break:keep-all;
+}
+.wrap{max-width:38rem;margin:0 auto;padding:0 1rem 4rem}
+
+/* 글씨 크기 조절 바 */
+.fontbar{
+  position:sticky;top:0;z-index:10;
+  display:flex;justify-content:flex-end;gap:.4rem;
+  padding:.5rem 1rem;background:rgba(251,247,239,.95);
+  border-bottom:1px solid var(--line);
+}
+.fontbar button{
+  font-size:1rem;padding:.3rem .8rem;border-radius:.6rem;
+  border:1px solid var(--line);background:var(--card);color:var(--ink);
+  cursor:pointer;
+}
+.fontbar button:active{background:var(--sea-soft)}
+
+/* 헤더 */
+header{text-align:center;padding:2.2rem 0 1.4rem}
+header .badge-trip{
+  display:inline-block;background:var(--sea);color:#fff;
+  padding:.25rem .9rem;border-radius:2rem;font-size:.85rem;letter-spacing:.05em;
+}
+header h1{font-size:1.9rem;margin:.6rem 0 .2rem}
+header .dates{color:var(--sub);font-size:1.05rem}
+
+/* 메뉴 버튼 */
+.menu{display:grid;grid-template-columns:1fr;gap:.8rem;margin:1rem 0 2rem}
+.menu a{
+  display:flex;align-items:center;gap:.8rem;
+  background:var(--card);border:1.5px solid var(--line);border-radius:1rem;
+  padding:1.1rem 1.2rem;text-decoration:none;color:var(--ink);
+  font-weight:700;font-size:1.15rem;
+  box-shadow:0 1px 3px rgba(38,51,59,.06);
+}
+.menu a .ico{font-size:1.5rem}
+.menu a:active{background:var(--sea-soft);border-color:var(--sea)}
+
+/* 뷰 전환 */
+.view[hidden]{display:none}
+.back{
+  display:inline-block;margin:1rem 0 .2rem;
+  color:var(--sea);text-decoration:none;font-weight:700;font-size:1rem;
+}
+
+/* 공통 섹션 */
+section{margin-bottom:2.6rem}
+h2{
+  font-size:1.35rem;color:var(--sea);
+  padding-bottom:.4rem;border-bottom:2px solid var(--sea);
+  margin:.6rem 0 1rem;
+}
+.card{
+  background:var(--card);border:1px solid var(--line);border-radius:1rem;
+  padding:1rem 1.1rem;margin-bottom:.7rem;
+  box-shadow:0 1px 3px rgba(38,51,59,.05);
+}
+
+/* 선언 */
+.decl{background:var(--sand);border:none}
+.decl li{margin:.35rem 0 .35rem 1.2rem}
+.decl summary{
+  text-align:center;font-weight:800;cursor:pointer;
+  list-style:none;color:var(--sea);font-size:1.05rem;
+}
+.decl summary::-webkit-details-marker{display:none}
+.decl[open] summary{margin-bottom:.5rem}
+
+/* 핵심정보 */
+.info-grid .label{
+  display:inline-block;background:var(--sea-soft);color:var(--sea);
+  font-weight:700;font-size:.85rem;padding:.1rem .6rem;border-radius:.5rem;
+  margin-bottom:.3rem;
+}
+.info-grid p{margin:.1rem 0}
+.info-grid .sub{color:var(--sub);font-size:.92rem}
+
+/* 타임라인 */
+.day-title{
+  font-size:1.15rem;font-weight:800;margin:1.4rem 0 .8rem;
+  display:flex;align-items:center;gap:.5rem;
+}
+.day-title .d{
+  background:var(--ink);color:#fff;border-radius:.6rem;
+  padding:.1rem .6rem;font-size:.95rem;
+}
+.tl{border-left:3px solid var(--sea);margin-left:.4rem;padding-left:1rem}
+.item{position:relative;margin-bottom:1rem}
+.item::before{
+  content:"";position:absolute;left:-1.62rem;top:.5rem;
+  width:.7rem;height:.7rem;border-radius:50%;
+  background:var(--sea);border:2.5px solid var(--bg);
+}
+.item .time{font-weight:800;color:var(--sea);font-size:.95rem}
+.item .name{font-weight:700;font-size:1.08rem}
+.item .note{color:var(--sub);font-size:.95rem;margin-top:.1rem}
+
+/* 뱃지 */
+.b{
+  display:inline-block;font-size:.78rem;font-weight:700;
+  padding:.08rem .55rem;border-radius:1rem;vertical-align:.12rem;margin-left:.3rem;
+}
+.b-ok{color:var(--ok);background:var(--ok-bg)}
+.b-warn{color:var(--warn);background:var(--warn-bg)}
+.b-info{color:var(--info);background:var(--info-bg)}
+.b-opt{color:var(--opt);background:var(--opt-bg)}
+
+/* 지도 링크 */
+.map{
+  display:inline-block;font-size:.85rem;font-weight:700;
+  color:var(--sea);text-decoration:none;
+  border:1px solid var(--sea);border-radius:1rem;
+  padding:.05rem .6rem;margin-left:.35rem;vertical-align:.1rem;
+  white-space:nowrap;
+}
+.map:active{background:var(--sea-soft)}
+
+/* 예산 표 */
+table{width:100%;border-collapse:collapse;font-size:.95rem}
+th,td{padding:.5rem .3rem;border-bottom:1px solid var(--line);text-align:left}
+td.num,th.num{text-align:right;white-space:nowrap}
+tr.total td{font-weight:800;color:var(--sea);border-top:2px solid var(--sea);border-bottom:none;font-size:1.02rem}
+.settle{
+  background:var(--sea);color:#fff;border-radius:1rem;
+  text-align:center;padding:1.1rem;margin-top:1rem;
+}
+.settle .amt{font-size:1.7rem;font-weight:800}
+.settle .cap{font-size:.9rem;opacity:.9}
+
+.notes li{margin:.4rem 0 .4rem 1.2rem}
+</style>
+</head>
+<body>
+
+<div class="fontbar">
+  <button onclick="setFont(-1)">가−</button>
+  <button onclick="setFont(0)">가</button>
+  <button onclick="setFont(1)">가＋</button>
+</div>
+
+<div class="wrap">
+
+<!-- ============ 홈 ============ -->
+<div class="view" id="view-home">
+  <header>
+    <span class="badge-trip">JEJU FAMILY TRIP</span>
+    <h1>제주 가족여행</h1>
+    <p class="dates">2026. 7. 11 (토) ~ 7. 13 (월)</p>
+  </header>
+
+  <section>
+    <details class="card decl">
+      <summary>* 선언문 *</summary>
+      <ul>
+        <li>나쁜 모습 자제합시다.</li>
+        <li>불평, 불만, 갈등이 있다면 이를 해결하는 어른스러운 방향을 제안하거나 요청할 것.</li>
+        <li>여행경비 기본 정책은 더치페이. 지금은 불편할 수 있지만, 앞으로는 이 방식이 함께 놀기 훨씬 편할 거라 믿음.</li>
+      </ul>
+    </details>
+  </section>
+
+  <nav class="menu">
+    <a href="#schedule"><span class="ico">🗓️</span>일정</a>
+    <a href="#info"><span class="ico">✈️</span>핵심정보</a>
+    <a href="#budget"><span class="ico">💰</span>예산</a>
+  </nav>
+</div>
+
+<!-- ============ 핵심정보 ============ -->
+<div class="view" id="view-info" hidden>
+  <a class="back" href="#home">← 메뉴로</a>
+  <h2>✈️ 핵심정보</h2>
+  <div class="info-grid">
+    <div class="card">
+      <span class="label">비행편</span>
+      <p>입도 · 7/11(토) 17:20 → 18:35</p>
+      <p>출도 · 7/13(월) 15:20 → 16:35</p>
+    </div>
+    <div class="card">
+      <span class="label">렌트카</span>
+      <p>조아렌트카 <a class="map" href="https://map.naver.com/p/search/%EC%A0%9C%EC%A3%BC%20%EC%A1%B0%EC%95%84%EB%A0%8C%ED%8A%B8%EC%B9%B4" target="_blank">지도</a></p>
+      <p>7/11(토) 19:00 인수 ~ 7/13(월) 14:00 반납</p>
+      <p class="sub">공항에서 엄마아빠만 픽업 → 렌트카 업체에 내려주고 → 다시 공항에서 누나·형 픽업</p>
+    </div>
+    <div class="card">
+      <span class="label">숙소</span>
+      <p>에코티엘 (제주시 연동 251-69) <a class="map" href="https://map.naver.com/p/search/%EC%A0%9C%EC%A3%BC%20%EC%97%90%EC%BD%94%ED%8B%B0%EC%97%98" target="_blank">지도</a></p>
+    </div>
+  </div>
+</div>
+
+<!-- ============ 일정 ============ -->
+<div class="view" id="view-schedule" hidden>
+  <a class="back" href="#home">← 메뉴로</a>
+  <h2>🗓️ 일정</h2>
+
+  <p class="day-title"><span class="d">7/11</span> 토요일 — 도착</p>
+  <div class="tl">
+    <div class="item">
+      <div class="time">18:35</div>
+      <div class="name">착륙 · 저녁 7시쯤 만난다고 생각하기</div>
+    </div>
+    <div class="item">
+      <div class="time">19:00 ~ 19:30</div>
+      <div class="name">렌트카 인수 (조아렌트카)</div>
+      <div class="note">엄마아빠 픽업 → 렌트카 업체 → 다시 공항에서 누나·형 픽업</div>
+    </div>
+    <div class="item">
+      <div class="time">20:00</div>
+      <div class="name">저녁 · 안경쓴고등어 <span class="b b-ok">예약완료</span> <a class="map" href="https://map.naver.com/p/search/%EC%A0%9C%EC%A3%BC%20%EC%95%88%EA%B2%BD%EC%93%B4%EA%B3%A0%EB%93%B1%EC%96%B4" target="_blank">지도</a></div>
+    </div>
+  </div>
+
+  <p class="day-title"><span class="d">7/12</span> 일요일 — 서부 투어</p>
+  <div class="tl">
+    <div class="item">
+      <div class="time">09:30 ~ 09:40</div>
+      <div class="name">민기네 먼저 상춘재 도착해서 대기</div>
+    </div>
+    <div class="item">
+      <div class="time">10:00 ~ 11:00</div>
+      <div class="name">아점 · 상춘재 <a class="map" href="https://map.naver.com/p/search/%EC%A0%9C%EC%A3%BC%20%EC%83%81%EC%B6%98%EC%9E%AC" target="_blank">지도</a></div>
+    </div>
+    <div class="item">
+      <div class="time">11:50 ~ 12:50</div>
+      <div class="name">카페 베케 <a class="map" href="https://map.naver.com/p/search/%EC%A0%9C%EC%A3%BC%20%EB%B2%A0%EC%BC%80" target="_blank">지도</a></div>
+    </div>
+    <div class="item">
+      <div class="time">13:40 ~ 14:40</div>
+      <div class="name">추사관 <a class="map" href="https://map.naver.com/p/search/%EC%A0%9C%EC%A3%BC%EC%B6%94%EC%82%AC%EA%B4%80" target="_blank">지도</a></div>
+    </div>
+    <div class="item">
+      <div class="time">15:00 ~ 16:00</div>
+      <div class="name">찻집 사이 <span class="b b-warn">예약변경필요</span> <a class="map" href="https://map.naver.com/p/search/%EC%A0%9C%EC%A3%BC%20%EC%B0%BB%EC%A7%91%20%EC%82%AC%EC%9D%B4" target="_blank">지도</a></div>
+    </div>
+    <div class="item">
+      <div class="time">16:30 ~ 17:30</div>
+      <div class="name">유동룡미술관 <span class="b b-ok">예약완료</span> <a class="map" href="https://map.naver.com/p/search/%EC%9C%A0%EB%8F%99%EB%A3%A1%EB%AF%B8%EC%88%A0%EA%B4%80" target="_blank">지도</a></div>
+    </div>
+    <div class="item">
+      <div class="time">17:30 ~ 18:30</div>
+      <div class="name">김창열미술관 <span class="b b-info">예약불필요</span> <a class="map" href="https://map.naver.com/p/search/%EA%B9%80%EC%B0%BD%EC%97%B4%EB%AF%B8%EC%88%A0%EA%B4%80" target="_blank">지도</a></div>
+    </div>
+    <div class="item">
+      <div class="time">이후</div>
+      <div class="name">한림수협 방문 <span class="b b-opt">선택</span> <a class="map" href="https://map.naver.com/p/search/%ED%95%9C%EB%A6%BC%EC%88%98%ED%98%91" target="_blank">지도</a></div>
+      <div class="note">야식으로 먹을 회 살 사람만 구매 · 경비계산 X</div>
+    </div>
+    <div class="item">
+      <div class="time">저녁</div>
+      <div class="name">고집돌우럭 <a class="map" href="https://map.naver.com/p/search/%EA%B3%A0%EC%A7%91%EB%8F%8C%EC%9A%B0%EB%9F%AD" target="_blank">지도</a></div>
+      <div class="note">주말 예약 불가 → 현장 대기</div>
+    </div>
+    <div class="item">
+      <div class="time">밤</div>
+      <div class="name">포티파이브 (칵테일바) <span class="b b-opt">선택</span> <a class="map" href="https://map.naver.com/p/search/%EC%A0%9C%EC%A3%BC%20%ED%8F%AC%ED%8B%B0%ED%8C%8C%EC%9D%B4%EB%B8%8C" target="_blank">지도</a></div>
+      <div class="note">갈 사람만 · 경비계산 X</div>
+    </div>
+  </div>
+
+  <p class="day-title"><span class="d">7/13</span> 월요일 — 마무리</p>
+  <div class="tl">
+    <div class="item">
+      <div class="time">오전</div>
+      <div class="name">체크아웃</div>
+    </div>
+    <div class="item">
+      <div class="time">오전</div>
+      <div class="name">카페 커피콜라주 <a class="map" href="https://map.naver.com/p/search/%EC%A0%9C%EC%A3%BC%20%EC%BB%A4%ED%94%BC%EC%BD%9C%EB%9D%BC%EC%A3%BC" target="_blank">지도</a></div>
+    </div>
+    <div class="item">
+      <div class="time">이후</div>
+      <div class="name">잠시 집 구경</div>
+    </div>
+    <div class="item">
+      <div class="time">점심</div>
+      <div class="name">국밥 · 춘향이네 or 광명식당
+        <a class="map" href="https://map.naver.com/p/search/%EC%A0%9C%EC%A3%BC%20%EC%B6%98%ED%96%A5%EC%9D%B4%EB%84%A4" target="_blank">춘향이네</a>
+        <a class="map" href="https://map.naver.com/p/search/%EC%A0%9C%EC%A3%BC%20%EA%B4%91%EB%AA%85%EC%8B%9D%EB%8B%B9" target="_blank">광명식당</a>
+      </div>
+      <div class="note">광명식당 = 동문시장 그때 그 국밥</div>
+    </div>
+    <div class="item">
+      <div class="time">이후</div>
+      <div class="name">4·3평화공원 <a class="map" href="https://map.naver.com/p/search/%EC%A0%9C%EC%A3%BC4.3%ED%8F%89%ED%99%94%EA%B3%B5%EC%9B%90" target="_blank">지도</a></div>
+    </div>
+    <div class="item">
+      <div class="time">14:00</div>
+      <div class="name">렌트카 반납 (조아렌트카)</div>
+    </div>
+    <div class="item">
+      <div class="time">14:30</div>
+      <div class="name">공항 도착 (늦어도 두시반)</div>
+    </div>
+    <div class="item">
+      <div class="time">15:20</div>
+      <div class="name">이륙 ✈️</div>
+    </div>
+  </div>
+  <div class="card" style="margin-top:1rem">
+    💡 만약 만장굴이 가고 싶으면 시간을 압축하면 가능하긴 함
+    <a class="map" href="https://map.naver.com/p/search/%EB%A7%8C%EC%9E%A5%EA%B5%B4" target="_blank">지도</a>
+  </div>
+</div>
+
+<!-- ============ 예산 ============ -->
+<div class="view" id="view-budget" hidden>
+  <a class="back" href="#home">← 메뉴로</a>
+  <h2>💰 예산</h2>
+  <div class="card">
+    <p style="font-weight:700;margin-bottom:.5rem">전체 지출 내역 (6인 기준)</p>
+    <table>
+      <tr><th>항목</th><th class="num">1인</th><th class="num">총액</th></tr>
+      <tr><td>렌터카</td><td class="num">25,000</td><td class="num">150,000</td></tr>
+      <tr><td>첫째 날 저녁 · 안경쓴고등어</td><td class="num">약 40,000</td><td class="num">240,000</td></tr>
+      <tr><td>둘째 날 아점 · 상춘재</td><td class="num">17,000</td><td class="num">102,000</td></tr>
+      <tr><td>카페 베케 <span style="color:var(--sub);font-size:.85em">(입장 6인+음료 2잔)</span></td><td class="num">12,500</td><td class="num">75,000</td></tr>
+      <tr><td>추사관</td><td class="num">500</td><td class="num">3,000</td></tr>
+      <tr><td>사이</td><td class="num">20,000</td><td class="num">120,000</td></tr>
+      <tr><td>유동룡미술관</td><td class="num">23,600</td><td class="num">141,600</td></tr>
+      <tr><td>김창열미술관</td><td class="num">2,000</td><td class="num">12,000</td></tr>
+      <tr><td>둘째 날 저녁 · 고집돌우럭</td><td class="num">약 40,000</td><td class="num">240,000</td></tr>
+      <tr><td>셋째 날 점심 · 국밥</td><td class="num">11,000</td><td class="num">66,000</td></tr>
+      <tr><td>커피콜라주</td><td class="num">6,000</td><td class="num">36,000</td></tr>
+      <tr class="total"><td>전체 합계</td><td></td><td class="num">약 1,200,000원</td></tr>
+    </table>
+  </div>
+  <div class="card">
+    <p style="font-weight:700;margin-bottom:.4rem">참고</p>
+    <ul class="notes">
+      <li>항공권 — 각자 결제 완료</li>
+      <li>숙소 — 정산 완료</li>
+    </ul>
+  </div>
+  <div class="settle">
+    <p class="cap">최종 정산</p>
+    <p class="amt">1인당 160,000원</p>
+  </div>
+</div>
+
+</div>
+
+<script>
+// ponytail: 해시 라우터 — 뒤로가기가 곧 홈 복귀
+const VIEWS=['home','info','schedule','budget'];
+function route(){
+  let h=location.hash.replace('#','');
+  if(!VIEWS.includes(h))h='home';
+  VIEWS.forEach(v=>document.getElementById('view-'+v).hidden=(v!==h));
+  scrollTo(0,0);
+}
+addEventListener('hashchange',route);
+route();
+
+// 글씨 크기 3단계, localStorage 저장
+const SIZES=[19,22,25];
+let idx=+(localStorage.getItem('fs')||0);
+applyFont();
+function setFont(d){
+  idx=d===0?0:Math.min(SIZES.length-1,Math.max(0,idx+d));
+  localStorage.setItem('fs',idx);
+  applyFont();
+}
+function applyFont(){document.documentElement.style.fontSize=SIZES[idx]+'px';}
+</script>
+
+</body>
+</html>
