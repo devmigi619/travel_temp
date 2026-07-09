@@ -34,16 +34,14 @@ body{
 /* 글씨 크기 조절 바 */
 .fontbar{
   position:sticky;top:0;z-index:10;
-  display:flex;justify-content:flex-end;gap:.4rem;
-  padding:.5rem 1rem;background:rgba(251,247,239,.95);
+  display:flex;align-items:center;justify-content:flex-end;gap:8px;
+  padding:10px 16px;background:rgba(251,247,239,.95);
   border-bottom:1px solid var(--line);
+  /* px 고정: 글씨 커져도 조절바 자체는 안 변하게 */
 }
-.fontbar button{
-  font-size:1rem;padding:.3rem .8rem;border-radius:.6rem;
-  border:1px solid var(--line);background:var(--card);color:var(--ink);
-  cursor:pointer;
-}
-.fontbar button:active{background:var(--sea-soft)}
+.fontbar .fs-s{font-size:13px;color:var(--sub)}
+.fontbar .fs-l{font-size:21px;color:var(--sub)}
+.fontbar input[type=range]{width:150px;accent-color:var(--sea)}
 
 /* 헤더 */
 header{text-align:center;padding:2.2rem 0 1.4rem}
@@ -169,9 +167,9 @@ tr.total td{font-weight:800;color:var(--sea);border-top:2px solid var(--sea);bor
 <body>
 
 <div class="fontbar">
-  <button onclick="setFont(-1)">가−</button>
-  <button onclick="setFont(0)">가</button>
-  <button onclick="setFont(1)">가＋</button>
+  <span class="fs-s">가</span>
+  <input type="range" id="fslider" min="0" max="4" step="1" aria-label="글씨 크기" oninput="setFont(+this.value)">
+  <span class="fs-l">가</span>
 </div>
 
 <div class="wrap">
@@ -388,13 +386,14 @@ function route(){
 addEventListener('hashchange',route);
 route();
 
-// 글씨 크기 4단계(16/19/22/25px), 기본 19px, localStorage 저장
-const SIZES=[16,19,22,25],DEF=1;
-let idx=+(localStorage.getItem('fs2')??DEF);
+// 글씨 크기 5단계 슬라이더(14/16/19/22/25px), 기본 19px, localStorage 저장
+const SIZES=[14,16,19,22,25],DEF=2;
+let idx=+(localStorage.getItem('fs3')??DEF);
+document.getElementById('fslider').value=idx;
 applyFont();
-function setFont(d){
-  idx=d===0?DEF:Math.min(SIZES.length-1,Math.max(0,idx+d));
-  localStorage.setItem('fs2',idx);
+function setFont(v){
+  idx=v;
+  localStorage.setItem('fs3',idx);
   applyFont();
 }
 function applyFont(){document.documentElement.style.fontSize=SIZES[idx]+'px';}
