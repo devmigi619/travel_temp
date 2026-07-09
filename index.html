@@ -388,13 +388,13 @@ function route(){
 addEventListener('hashchange',route);
 route();
 
-// 글씨 크기 3단계, localStorage 저장
-const SIZES=[19,22,25];
-let idx=+(localStorage.getItem('fs')||0);
+// 글씨 크기 4단계(16/19/22/25px), 기본 19px, localStorage 저장
+const SIZES=[16,19,22,25],DEF=1;
+let idx=+(localStorage.getItem('fs2')??DEF);
 applyFont();
 function setFont(d){
-  idx=d===0?0:Math.min(SIZES.length-1,Math.max(0,idx+d));
-  localStorage.setItem('fs',idx);
+  idx=d===0?DEF:Math.min(SIZES.length-1,Math.max(0,idx+d));
+  localStorage.setItem('fs2',idx);
   applyFont();
 }
 function applyFont(){document.documentElement.style.fontSize=SIZES[idx]+'px';}
