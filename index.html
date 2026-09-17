@@ -75,6 +75,7 @@ h2 .d{background:var(--green);color:#fff;border-radius:.6rem;padding:.05rem .6re
   padding:.02rem .55rem;margin-left:.3rem;vertical-align:.12rem;white-space:nowrap;
 }
 .map:active{background:var(--green-soft)}
+.map.disabled{opacity:.45;pointer-events:none;border-color:var(--sub);color:var(--sub)}
 
 .tip{
   background:var(--tip-bg);color:var(--tip-ink);
@@ -104,8 +105,19 @@ h2 .d{background:var(--green);color:#fff;border-radius:.6rem;padding:.05rem .6re
 </nav>
 
 <section id="d24">
-  <h2><span class="d">9/24</span>목요일</h2>
-  <div class="card">일정 미정</div>
+  <h2><span class="d">9/24</span>목요일 — 이동일</h2>
+  <div class="tl">
+    <div class="item">
+      <div class="time">16:40 → 17:40</div>
+      <div class="name">비행기 · 제주 → 부산 ✈️</div>
+      <div class="note">진에어</div>
+    </div>
+    <div class="item">
+      <div class="time">저녁</div>
+      <div class="name">랑이네 집</div>
+      <div class="note">은별 · 랑이 저녁식사</div>
+    </div>
+  </div>
 </section>
 
 <section id="d25">
@@ -113,41 +125,42 @@ h2 .d{background:var(--green);color:#fff;border-radius:.6rem;padding:.05rem .6re
   <div class="tl">
     <div class="item">
       <div class="time">점심</div>
-      <div class="name">팔도맛집 <a class="map" href="https://map.naver.com/p/search/남해%20팔도맛집" target="_blank">지도</a></div>
+      <div class="name">팔도맛집 <a class="map" href="https://naver.me/Flc9ivNx" target="_blank">지도</a></div>
       <div class="note">엄마 추천</div>
     </div>
     <div class="item">
-      <div class="name">초록스토어 <a class="map" href="https://map.naver.com/p/search/남해%20초록스토어" target="_blank">지도</a></div>
+      <div class="name">초록스토어 <a class="map" href="https://naver.me/FDnapSQe" target="_blank">지도</a></div>
       <div class="note">기념품샵 · 팔도맛집 근처</div>
     </div>
     <div class="item">
-      <div class="name">카페유자 <a class="map" href="https://map.naver.com/p/search/남해%20카페유자" target="_blank">지도</a></div>
+      <div class="name">카페유자 <a class="map" href="https://naver.me/xk1n3pOL" target="_blank">지도</a></div>
       <div class="note">유자카스테라, 유자음료 · 초록스토어에서 차로 4분</div>
     </div>
     <div class="item">
-      <div class="name">물건마을 산책 <a class="map" href="https://map.naver.com/p/search/남해%20물건마을" target="_blank">지도</a></div>
+      <div class="name">물건마을 산책 <a class="map" href="https://naver.me/FFqWmkUk" target="_blank">지도</a></div>
       <div class="note">독일마을 아랫쪽에 주차 후 걸어서 산책</div>
     </div>
     <div class="item">
-      <div class="name">독일마을 산책 <a class="map" href="https://map.naver.com/p/search/남해%20독일마을" target="_blank">지도</a></div>
+      <div class="name">독일마을 산책 <a class="map" href="https://naver.me/502MHEiH" target="_blank">지도</a></div>
       <div class="note">뷰 좋은 가게에서 휴식 · 카페유자에서 차로 5분</div>
       <div class="tip">명절음식 있으니까 독일마을에서 간단히 먹기도 가능</div>
     </div>
     <div class="item">
       <div class="time">노을</div>
-      <div class="name">서면 카페 보통날 <a class="map" href="https://map.naver.com/p/search/남해%20서면%20보통날" target="_blank">지도</a></div>
+      <div class="name">서면 카페 보통날 <a class="map" href="https://naver.me/xSFCJbrf" target="_blank">지도</a></div>
     </div>
     <div class="item">
       <div class="time">저녁</div>
       <div class="name">멸치쌈밥 / 부산횟집 / 해살이물회 중 택1</div>
       <div class="note">
-        <a class="map" href="https://map.naver.com/p/search/남해%20멸치쌈밥" target="_blank">멸치쌈밥</a>
-        <a class="map" href="https://map.naver.com/p/search/남해%20부산횟집" target="_blank">부산횟집</a>
-        <a class="map" href="https://map.naver.com/p/search/남해%20해살이물회" target="_blank">해살이물회</a>
+        <span class="map disabled">멸치쌈밥</span>
+        <a class="map" href="https://naver.me/xyTGIRBC" target="_blank">부산횟집</a>
+        <a class="map" href="https://naver.me/xprEc2sn" target="_blank">해살이물회</a>
       </div>
     </div>
     <div class="item">
-      <div class="name">숙소 체크인</div>
+      <div class="name">숙소 체크인 · 토모노야 시그니쳐 남해 <a class="map" href="https://naver.me/F0z2gKsE" target="_blank">지도</a></div>
+      <div class="note">아고다 예약완료</div>
     </div>
   </div>
 </section>
@@ -163,22 +176,22 @@ h2 .d{background:var(--green);color:#fff;border-radius:.6rem;padding:.05rem .6re
       <div class="time">11:00 · 아점</div>
       <div class="name">갯내음(게장) / 멸치쌈밥집</div>
       <div class="note">
-        <a class="map" href="https://map.naver.com/p/search/남해%20갯내음" target="_blank">갯내음</a>
-        <a class="map" href="https://map.naver.com/p/search/남해%20멸치쌈밥" target="_blank">멸치쌈밥</a>
+        <a class="map" href="https://naver.me/52R576L7" target="_blank">갯내음</a>
+        <span class="map disabled">멸치쌈밥</span>
       </div>
     </div>
     <div class="item">
-      <div class="name">상주은모래비치 <a class="map" href="https://map.naver.com/p/search/남해%20상주은모래비치" target="_blank">지도</a></div>
+      <div class="name">상주은모래비치 <a class="map" href="https://naver.me/GXAe6zE4" target="_blank">지도</a></div>
     </div>
     <div class="item">
-      <div class="name">상주장 <a class="map" href="https://map.naver.com/p/search/남해%20상주장" target="_blank">지도</a></div>
+      <div class="name">상주장 <a class="map" href="https://naver.me/GaldynCa" target="_blank">지도</a></div>
       <div class="note">카페</div>
     </div>
     <div class="item">
-      <div class="name">보리암 <a class="map" href="https://map.naver.com/p/search/남해%20보리암" target="_blank">지도</a></div>
+      <div class="name">보리암 <a class="map" href="https://naver.me/GEXhw29q" target="_blank">지도</a></div>
       <div class="tip">
         <ul>
-          <li>북곡2 제2주차장 이용 <a class="map" href="https://map.naver.com/p/search/보리암%20제2주차장" target="_blank">지도</a></li>
+          <li>북곡2 제2주차장 이용 <a class="map" href="https://naver.me/5KbFwglK" target="_blank">지도</a></li>
           <li>제2주차장 만차면 제1주차장 주차 후 셔틀버스</li>
           <li>매표소부터 보리암까지 약 20분</li>
           <li>금산산장에서 라면 같은 거 간단히 먹을 수 있음</li>
@@ -187,7 +200,12 @@ h2 .d{background:var(--green);color:#fff;border-radius:.6rem;padding:.05rem .6re
     </div>
     <div class="item">
       <div class="time">20:15</div>
-      <div class="name">부산공항 · 비행기 출발 ✈️</div>
+      <div class="name">부산공항 도착</div>
+    </div>
+    <div class="item">
+      <div class="time">21:15 → 22:15</div>
+      <div class="name">비행기 · 부산 → 제주 ✈️</div>
+      <div class="note">대한항공</div>
     </div>
   </div>
 </section>
